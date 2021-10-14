@@ -18,7 +18,7 @@ jobs:
 # Clone repository with scrip
       - uses: actions/checkout@v2
         with:
-          repository: BankiFi/test-scripts
+          repository: amin-serafat/test-scripts
           token: ${{ secrets.ACCESS_TOKEN }}
           path: test-scripts
 # Getting variables from pipline_conf
