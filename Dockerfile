@@ -1,15 +1,17 @@
-FROM node:12
+FROM nginx:latest
 
-#Creating working directory
-WORKDIR /usr/src/app
+COPY ./index.html /usr/share/nginx/html/index.html
 
-COPY package*.json ./
+# #Creating working directory
+# WORKDIR /usr/src/app
 
-RUN npm install
+# COPY package*.json ./
 
-#Copy original code
-COPY . .
+# RUN npm install
 
-EXPOSE 8080
+# #Copy original code
+# COPY . .
 
-CMD [ "node", "server.js" ]
+# EXPOSE 8080
+
+# CMD [ "node", "server.js" ]
