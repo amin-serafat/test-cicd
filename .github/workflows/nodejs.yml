@@ -1,12 +1,12 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches:
-      - main
-  create:
-    tags:
-      - '*'
+  # push:
+  #   branches:
+  #     - main
+  # create:
+  #   tags:
+  #     - '*'
   workflow_dispatch:
     inputs:
       name:
