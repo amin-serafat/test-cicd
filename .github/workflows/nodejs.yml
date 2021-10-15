@@ -28,10 +28,6 @@ jobs:
           repository: amin-serafat/test-scripts
           token: ${{ secrets.ACCESS_TOKEN }}
           path: test-scripts
-# Start workflow_dispatch
-          - name: Start workflow_dispatch
-          - run: |
-            echo "Hello ${{ github.event.inputs.name }}!"
 # Getting variables from pipline_conf
       - name: Get secrets
         run: |
