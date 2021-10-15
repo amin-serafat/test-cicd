@@ -79,7 +79,7 @@ jobs:
 
 # Check trigger Test
     # if: ${{ github.event.inputs.name == 'Test'}}
-    steps:
+    steps2:
 # Clone main repository
       - uses: actions/checkout@v2
 # Clone repository with scrip
