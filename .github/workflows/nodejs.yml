@@ -60,7 +60,7 @@ jobs:
         if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
         run: |
           echo "---FINISH---"
-        then:
+        when:
 # Pull and deploy image 
         - name: Docker pull and deploy
           run: |
