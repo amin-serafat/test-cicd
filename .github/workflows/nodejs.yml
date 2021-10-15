@@ -76,3 +76,49 @@ jobs:
         run: |
           chmod 755 ./test-scripts/run.sh
           ./test-scripts/run.sh
+
+# Check trigger Test
+    if: ${{ github.event.inputs.name == 'Test'}}
+    steps:
+# Clone main repository
+      - uses: actions/checkout@v2
+# Clone repository with scrip
+      - uses: actions/checkout@v2
+        with:
+          repository: amin-serafat/test-scripts
+          token: ${{ secrets.ACCESS_TOKEN }}
+          path: test-scripts
+# Getting variables from pipline_conf
+      - name: Get secrets
+        run: |
+          cat ./pipeline_conf
+          ./test-scripts/pars.sh
+# Creating hash and branch version name if we did push to main branch
+      - name: Application version
+        run: |
+          ./test-scripts/app_version.sh
+# Build docker image
+      - name: docker build Dockerfile
+        run: |
+          echo "---BUILD IMAGE DOCKER---"
+          ./test-scripts/build.sh
+# Login to DockerHub
+      - uses: docker/login-action@v1
+        with:
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_TOKEN}}
+# Push image to the repository
+      - name: docker push
+        run: |
+          echo "---PUSH IMAGE TO DOCKERHUB---"
+          ./test-scripts/push.sh
+# Pull and deploy image 
+      - name: Docker pull and deploy
+        run: |
+          echo "---PULL IMAGE FROM DOCKERHUB---"
+          ./test-scripts/pull.sh
+# Deploy docker image
+      - name: Deploy docker image
+        run: |
+          chmod 755 ./test-scripts/run.sh
+          ./test-scripts/run.sh
