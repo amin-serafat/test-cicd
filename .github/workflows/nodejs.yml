@@ -19,8 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: docker_secret
 
-# Check trigger push and create
-    if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
     steps:
 # Clone main repository
       - uses: actions/checkout@v2
@@ -38,6 +36,11 @@ jobs:
 # Creating hash and branch version name if we did push to main branch
       - name: Application version
         if: ${{ github.event_name == 'push' }}
+        run: |
+          ./test-scripts/app_version.sh
+# Create tag during deploying from workflow_dispatch
+      - name: Create tag during deploying from workflow_dispatch
+        if: ${{ github.event_name == 'workflow_dispatch'}}
         run: |
           ./test-scripts/app_version.sh
 # Creating tag version name if we created tag
@@ -62,7 +65,7 @@ jobs:
           ./test-scripts/push.sh
 # Check trigger 
       - name: Proccess stop if trigger is deployment
-        if: github.event_name == 'workflow_dispatch'
+        if: ${{ github.event_name == 'workflow_dispatch'}}
         run: |
           echo "---PULL IMAGE FROM DOCKERHUB---"
           ./test-scripts/pull.sh
@@ -73,5 +76,3 @@ jobs:
         if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
         run: |
           echo "------FINISH--------"
-# ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
-# Pull and deploy image 
