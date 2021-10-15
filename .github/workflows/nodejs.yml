@@ -54,9 +54,9 @@ jobs:
         run: |
           echo "---PUSH IMAGE TO DOCKERHUB---"
           ./test-scripts/push.sh
-# Check trigger
+# Check trigger 
       - name: Proccess stop if trigger is push
-        if: ${{ github.event_name == 'push' 'tags'}}
+        if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'tags'}}
         run: |
           exit 1
 # Pull and deploy image 
