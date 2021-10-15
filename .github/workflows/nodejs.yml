@@ -61,14 +61,14 @@ jobs:
         run: |
           echo "---FINISH---"
 # Pull and deploy image 
-        - name: Docker pull and deploy
-          run: |
-            echo "---PULL IMAGE FROM DOCKERHUB---"
-            ./test-scripts/pull.sh
+      - name: Docker pull and deploy
+        run: |
+          echo "---PULL IMAGE FROM DOCKERHUB---"
+          ./test-scripts/pull.sh
 # Deploy docker image
-        - name: Deploy docker image
-          run: |
-            chmod 755 ./test-scripts/run.sh
-            ./test-scripts/run.sh
+      - name: Deploy docker image
+        run: |
+          chmod 755 ./test-scripts/run.sh
+          ./test-scripts/run.sh
         
 
