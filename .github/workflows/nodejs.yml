@@ -16,11 +16,10 @@ on:
 
 jobs:
   main:
+    if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
     runs-on: ubuntu-latest
     environment: docker_secret
-
-    if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
-    uses:
+    
     steps:
 # Clone main repository
       - uses: actions/checkout@v2
