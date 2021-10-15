@@ -9,7 +9,10 @@ on:
       - '*' 
   workflow_dispatch:
     inputs:
-      deployment:
+      deploy:
+        description: 'Deploy? (yes/no).'
+        required: true
+
 
 jobs:
   main:
@@ -59,7 +62,7 @@ jobs:
           ./test-scripts/push.sh
 # Check trigger 
       - name: Proccess stop if trigger is deployment
-        if: ${{ github.event.inputs.deployment }};
+        if: ${{ github.event_name == "workflow_dispatch" }};
         run: |
           echo "---PULL IMAGE FROM DOCKERHUB---"
           ./test-scripts/pull.sh
