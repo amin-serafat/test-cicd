@@ -66,5 +66,5 @@ jobs:
           chmod 755 ./test-scripts/run.sh
           ./test-scripts/run.sh
         else:
-        echo "------FINISH--------"
+          echo "------FINISH--------"
         fi:
