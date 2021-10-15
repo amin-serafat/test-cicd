@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: docker_secret
 
-    if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
     steps:
+      if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
 # Clone main repository
       - uses: actions/checkout@v2
 # Clone repository with scrip
