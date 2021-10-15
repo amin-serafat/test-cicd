@@ -7,12 +7,12 @@ on:
   # create:
   #   tags:
   #     - '*' 
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Test'
-        required: true
-        default: 'Test'
+  [push,workflow_dispatch]
+    # inputs:
+    #   name:
+    #     description: 'Test'
+    #     required: true
+    #     default: 'Test'
 
 jobs:
   main:
