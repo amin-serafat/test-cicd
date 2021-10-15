@@ -61,5 +61,7 @@ jobs:
         run: |
           echo "---PULL IMAGE FROM DOCKERHUB---"
           ./test-scripts/pull.sh
+# Deploy docker image
+      - name: deploy docker image
           chmod 755 ./test-scripts/run.sh
           ./test-scripts/run.sh
