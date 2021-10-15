@@ -60,7 +60,7 @@ jobs:
         if ${{github.event_name == 'deployment'}}
         #${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
 # Pull and deploy image 
-        run: |
+          then
           echo "---PULL IMAGE FROM DOCKERHUB---"
           ./test-scripts/pull.sh
           chmod 755 ./test-scripts/run.sh
