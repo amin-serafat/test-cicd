@@ -55,7 +55,7 @@ jobs:
       - name: Application version
         if: ${{ github.event_name == 'push' }}
         run: |
-          exit 0
+          exit $?
 # Pull and deploy image 
       - name: docker pull and deploy
         run: |
