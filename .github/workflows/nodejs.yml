@@ -78,7 +78,7 @@ jobs:
           ./test-scripts/run.sh
 
 # Check trigger Test
-    if: ${{ github.event.inputs.name == 'Test'}}
+    # if: ${{ github.event.inputs.name == 'Test'}}
     steps:
 # Clone main repository
       - uses: actions/checkout@v2
