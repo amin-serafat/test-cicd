@@ -63,5 +63,6 @@ jobs:
           ./test-scripts/pull.sh
 # Deploy docker image
       - name: deploy docker image
+        run: |
           chmod 755 ./test-scripts/run.sh
           ./test-scripts/run.sh
