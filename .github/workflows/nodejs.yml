@@ -7,9 +7,9 @@ on:
   create:
     tags:
       - '*'
-  workflow_dispatch:
-    inputs:
-      - '*'
+  # workflow_dispatch:
+  #   inputs:
+  #     - '*'
 
 jobs:
   main:
@@ -58,7 +58,7 @@ jobs:
       - name: Proccess stop if trigger is push
         if: ${{ github.event_name == 'push' }}
         run: |
-          exit $?
+          exit 1
 # Pull and deploy image 
       - name: Docker pull and deploy
         run: |
