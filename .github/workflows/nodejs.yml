@@ -56,15 +56,14 @@ jobs:
           echo "---PUSH IMAGE TO DOCKERHUB---"
           ./test-scripts/push.sh
 # Check trigger 
-      - name: Proccess stop if trigger is push or tag
-        if ${{github.event_name == 'deployment'}};
-          then
+      - name: Proccess stop if trigger is deployment
+        if: ${{github.event_name == 'deployment'}};
           echo "---PULL IMAGE FROM DOCKERHUB---"
           ./test-scripts/pull.sh
           chmod 755 ./test-scripts/run.sh
           ./test-scripts/run.sh
-        fi
-        #else
-        #  echo "------FINISH--------"
+      - name: Proccess stop if trigger is push or tag
+        if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
+          echo "------FINISH--------"
 # ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
 # Pull and deploy image 
