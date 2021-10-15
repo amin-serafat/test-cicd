@@ -57,10 +57,10 @@ jobs:
           ./test-scripts/push.sh
 # Check trigger 
       - name: Proccess stop if trigger is push or tag
-        if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
+        if ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
         run: |
           echo "---FINISH---"
-        else:
+        else
 # Pull and deploy image 
         - name: Docker pull and deploy
           run: |
