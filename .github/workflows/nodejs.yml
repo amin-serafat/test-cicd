@@ -65,6 +65,6 @@ jobs:
           ./test-scripts/pull.sh
           chmod 755 ./test-scripts/run.sh
           ./test-scripts/run.sh
-        else:
+        else: if:
           echo "------FINISH--------"
         fi:
