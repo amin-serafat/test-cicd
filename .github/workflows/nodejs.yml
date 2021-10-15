@@ -58,7 +58,6 @@ jobs:
 # Check trigger 
       - name: Proccess stop if trigger is push or tag
         if ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
-        run: |
           echo "---FINISH---"
         else
 # Pull and deploy image 
