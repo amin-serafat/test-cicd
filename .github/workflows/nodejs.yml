@@ -52,7 +52,7 @@ jobs:
           echo "---PUSH IMAGE TO DOCKERHUB---"
           ./test-scripts/push.sh
 # Check trigger
-- name: Application version
+      - name: Application version
         if: ${{ github.event_name == 'push' }}
         run: |
           exit 0
