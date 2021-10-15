@@ -62,7 +62,7 @@ jobs:
           ./test-scripts/push.sh
 # Check trigger 
       - name: Proccess stop if trigger is deployment
-        if: ${{ github.event_name == "workflow_dispatch" }}
+        if: github.event_name == 'workflow_dispatch'
         run: |
           echo "---PULL IMAGE FROM DOCKERHUB---"
           ./test-scripts/pull.sh
