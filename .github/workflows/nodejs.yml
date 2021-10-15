@@ -6,7 +6,7 @@ on:
   #     - main
   # create:
   #   tags:
-  #     - '*'
+  #     - '*' 
   workflow_dispatch:
     inputs:
       name:
