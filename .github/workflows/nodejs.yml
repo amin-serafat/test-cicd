@@ -67,4 +67,4 @@ jobs:
           ./test-scripts/run.sh
         else:
         echo "------FINISH--------"
-
+        fi:
