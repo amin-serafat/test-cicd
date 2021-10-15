@@ -7,9 +7,12 @@ on:
   create:
     tags:
       - '*'
-  # workflow_dispatch:
-  #   inputs:
-  #     - '*'
+  workflow_dispatch:
+    # inputs:
+    #   name:
+    #     description: 'Test'
+    #     required: true
+    #     default: 'Test'
 
 jobs:
   main:
@@ -55,9 +58,10 @@ jobs:
           echo "---PUSH IMAGE TO DOCKERHUB---"
           ./test-scripts/push.sh
 # Check trigger 
-      - name: Proccess stop if trigger is push
-        if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'tags'}}
+      - name: Proccess stop if trigger is push or tag
+        if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
         run: |
+          echo "---Proccess is stopped---"
           exit 1
 # Pull and deploy image 
       - name: Docker pull and deploy
