@@ -1,18 +1,18 @@
 name: Docker Image CI
 
 on:
-  # push:
-  #   branches:
-  #     - main
-  # create:
-  #   tags:
-  #     - '*' 
-  [pull_request, workflow_dispatch]
-    # inputs:
-    #   name:
-    #     description: 'Test'
-    #     required: true
-    #     default: 'Test'
+  push:
+    branches:
+      - main
+  create:
+    tags:
+      - '*' 
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Test'
+        required: true
+        default: 'Test'
 
 jobs:
   main:
