@@ -56,7 +56,7 @@ jobs:
           ./test-scripts/push.sh
 # Check trigger
       - name: Proccess stop if trigger is push
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' 'tags'}}
         run: |
           exit 1
 # Pull and deploy image 
