@@ -63,8 +63,8 @@ jobs:
           ./test-scripts/pull.sh
           chmod 755 ./test-scripts/run.sh
           ./test-scripts/run.sh
-        else
-          echo "------FINISH--------"
+        #else
+        #  echo "------FINISH--------"
         fi:
 # ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
 # Pull and deploy image 
