@@ -71,5 +71,6 @@ jobs:
           run: |
             chmod 755 ./test-scripts/run.sh
             ./test-scripts/run.sh
+        end
         
 
