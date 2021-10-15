@@ -7,6 +7,9 @@ on:
   create:
     tags:
       - '*'
+  workflow_dispatch:
+    inputs:
+      - '*'
 
 jobs:
   main:
@@ -52,17 +55,17 @@ jobs:
           echo "---PUSH IMAGE TO DOCKERHUB---"
           ./test-scripts/push.sh
 # Check trigger
-      - name: Application version
+      - name: Proccess stop if trigger is push
         if: ${{ github.event_name == 'push' }}
         run: |
           exit $?
 # Pull and deploy image 
-      - name: docker pull and deploy
+      - name: Docker pull and deploy
         run: |
           echo "---PULL IMAGE FROM DOCKERHUB---"
           ./test-scripts/pull.sh
 # Deploy docker image
-      - name: deploy docker image
+      - name: Deploy docker image
         run: |
           chmod 755 ./test-scripts/run.sh
           ./test-scripts/run.sh
