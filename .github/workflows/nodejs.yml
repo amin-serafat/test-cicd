@@ -33,14 +33,9 @@ jobs:
         run: |
           cat ./pipeline_conf
           ./test-scripts/pars.sh
-# Creating hash and branch version name if we did deloyment and wrote "yes"
-      - name: Application version for deployment
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy == 'yes'
-        run: |
-          ./test-scripts/app_version.sh
 # Creating hash and branch version name if we did push to main branch
       - name: Application version for push
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ github.event_name == 'push' }} && ${{ github.event_name == 'workflow_dispatch'}}
         run: |
           ./test-scripts/app_version.sh
 # Creating tag version name if we created tag
@@ -65,7 +60,7 @@ jobs:
           ./test-scripts/push.sh
 # Check trigger 
       - name: Proccess stop if trigger is deployment
-        if: ${{ github.event_name == 'workflow_dispatch'}}
+        if: ${{ github.event_name == 'workflow_dispatch'}} && ${{ github.event.inputs.deploy == 'yes'}}
         run: |
           echo "---PULL IMAGE FROM DOCKERHUB---"
           ./test-scripts/pull.sh
