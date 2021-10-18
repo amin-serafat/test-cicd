@@ -35,7 +35,7 @@ jobs:
           ./test-scripts/pars.sh
 # Creating hash and branch version name if we did deloyment and wrote "yes"
       - name: Application version for deployment
-        if: if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy == 'yes'
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy == 'yes'
         run: |
           ./test-scripts/app_version.sh
 # Creating hash and branch version name if we did push to main branch
