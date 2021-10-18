@@ -33,9 +33,14 @@ jobs:
         run: |
           cat ./pipeline_conf
           ./test-scripts/pars.sh
+# Creating hash and branch version name if we did deloyment and wrote "yes"
+      - name: Application version for deployment
+        if: if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy == 'yes'
+        run: |
+          ./test-scripts/app_version.sh
 # Creating hash and branch version name if we did push to main branch
-      - name: Application version
-        if: ${{ github.event_name == 'push' }} && ${{ github.event_name == 'workflow_dispatch'}}
+      - name: Application version for push
+        if: ${{ github.event_name == 'push' }}
         run: |
           ./test-scripts/app_version.sh
 # Creating tag version name if we created tag
@@ -67,7 +72,3 @@ jobs:
           chmod 755 ./test-scripts/run.sh
           echo "---DEPLOY IMAGE---"
           ./test-scripts/run.sh
-      # - name: Proccess stop if trigger is push or tag
-      #   if: ${{ github.event_name == 'push'}} && ${{ github.event_name == 'create'}}
-      #   run: |
-      #     echo "------FINISH--------"
