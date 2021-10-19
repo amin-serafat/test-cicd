@@ -22,7 +22,7 @@ jobs:
     steps:
 # Clone main repository
       - uses: actions/checkout@v2
-# Clone repository with scrip
+# Clone repository with script
       - uses: actions/checkout@v2
         with:
           repository: amin-serafat/test-scripts
