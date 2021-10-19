@@ -18,7 +18,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     environment: 
-      docker_secret
+      # docker_secret
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
     steps:
