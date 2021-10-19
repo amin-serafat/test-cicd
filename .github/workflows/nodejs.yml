@@ -1,5 +1,8 @@
 name: Docker Image CI
 
+env:
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
 on:
   push:
     branches:
@@ -18,8 +21,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     environment: 
-      # docker_secret
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      docker_secret
 
     steps:
 # Clone main repository
