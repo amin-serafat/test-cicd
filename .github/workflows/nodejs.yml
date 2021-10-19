@@ -2,6 +2,7 @@ name: Docker Image CI
 
 env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  GIT_OPS: ${{ secrets.GIT_OPS }}
 
 on:
   push:
