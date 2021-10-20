@@ -35,7 +35,7 @@ jobs:
 # Getting variables from pipline_conf
       - name: Get secrets
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' $SLACK_WEBHOOK_URL
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Deployment start!"}' $SLACK_WEBHOOK_URL
           ./test-scripts/pars.sh
 # Creating hash and branch version name if we did push to main branch
       - name: Application version for push
@@ -52,6 +52,7 @@ jobs:
         run: |
           echo "---BUILD IMAGE DOCKER---"
           ./test-scripts/build.sh
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Building finish successfully!"}' $SLACK_WEBHOOK_URL
 # Login to DockerHub
       - uses: docker/login-action@v1
         with:
@@ -71,3 +72,4 @@ jobs:
           chmod 755 ./test-scripts/run.sh
           echo "---DEPLOY IMAGE---"
           ./test-scripts/run.sh
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Deployment finish successfuly!"}' $SLACK_WEBHOOK_URL
