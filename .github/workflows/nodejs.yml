@@ -18,6 +18,7 @@ on:
         required: true
 
 jobs:
+  curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
   main:
     runs-on: ubuntu-latest
     environment: 
