@@ -35,7 +35,6 @@ jobs:
 # Getting variables from pipline_conf
       - name: Get secrets
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
           ./test-scripts/pars.sh
 # Creating hash and branch version name if we did push to main branch
       - name: Application version for push
@@ -52,6 +51,7 @@ jobs:
         run: |
           echo "---BUILD IMAGE DOCKER---"
           ./test-scripts/build.sh
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
 # Login to DockerHub
       - uses: docker/login-action@v1
         with:
