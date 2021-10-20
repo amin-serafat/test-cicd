@@ -35,7 +35,7 @@ jobs:
 # Getting variables from pipline_conf
       - name: Get secrets
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' $SLACK_WEBHOOK_URL
           ./test-scripts/pars.sh
 # Creating hash and branch version name if we did push to main branch
       - name: Application version for push
