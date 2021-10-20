@@ -18,7 +18,6 @@ on:
         required: true
 
 jobs:
-  curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
   main:
     runs-on: ubuntu-latest
     environment: 
@@ -36,7 +35,7 @@ jobs:
 # Getting variables from pipline_conf
       - name: Get secrets
         run: |
-          cat ./pipeline_conf
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
           ./test-scripts/pars.sh
 # Creating hash and branch version name if we did push to main branch
       - name: Application version for push
